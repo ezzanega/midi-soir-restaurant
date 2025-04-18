@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu Book Flip</title>
+  <!-- Include StPageFlip CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/page-flip/dist/css/page-flip.min.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f2f5;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .book-container {
+      width: 800px;
+      height: 600px;
+      margin: 20px 0;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #343a40;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #495057;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="book-container" id="book"></div>
+
+  <div class="controls">
+    <button id="prevBtn">Previous</button>
+    <button id="nextBtn">Next</button>
+  </div>
+
+  <!-- Include StPageFlip JS -->
+  <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const images = [
+        'MIDI SOIR MODIF ff/0.png',
+        'MIDI SOIR MODIF ff/1.png',
+        'MIDI SOIR MODIF ff/2.png',
+        'MIDI SOIR MODIF ff/3.png',
+        'MIDI SOIR MODIF ff/4.png',
+        'MIDI SOIR MODIF ff/5.png'
+        // Add more image paths as needed
+      ];
+
+      const pageFlip = new St.PageFlip(document.getElementById('book'), {
+        width: 400,
+        height: 600,
+        size: 'fixed',
+        maxShadowOpacity: 0.5,
+        showCover: false,
+        mobileScrollSupport: false,
+      });
+
+      pageFlip.loadFromImages(images);
+
+      // Navigation buttons
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+
+      prevBtn.addEventListener('click', () => {
+        pageFlip.flipPrev();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        pageFlip.flipNext();
+      });
+
+      // Disable buttons at the beginning and end
+      pageFlip.on('flip', (e) => {
+        const currentPage = pageFlip.getCurrentPageIndex();
+        const totalPages = pageFlip.getPageCount();
+
+        prevBtn.disabled = currentPage === 0;
+        nextBtn.disabled = currentPage >= totalPages - 1;
+      });
+
+      // Initialize button states
+      prevBtn.disabled = true;
+    });
+  </script>
+</body>
+</html>
