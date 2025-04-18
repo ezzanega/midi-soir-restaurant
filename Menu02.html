@@ -48,6 +48,8 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="assets/css/book-menu.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/page-flip/dist/css/page-flip.min.css" />
+
 
   </head>
   <body>
@@ -356,6 +358,7 @@
         });
       });
     </script>
+    
 
     <!-- Include StPageFlip JS -->
     <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
@@ -368,44 +371,67 @@
           "MIDI SOIR MODIF ff/3.png",
           "MIDI SOIR MODIF ff/4.png",
           "MIDI SOIR MODIF ff/5.png",
-          // Add more image paths as needed
         ];
-
-        const pageFlip = new St.PageFlip(document.getElementById("book"), {
-          width: 400,
-          height: 600,
-          size: "fixed",
-          maxShadowOpacity: 0.5,
+    
+        const bookContainer = document.getElementById("book");
+    
+        // Detect mobile view
+        function isMobileView() {
+          return window.innerWidth <= 768;
+        }
+    
+        // Dynamic size for book
+        function getBookDimensions() {
+          const width = Math.min(window.innerWidth * 0.9, 1000);
+          const height = window.innerHeight * 0.85;
+          return { width, height };
+        }
+    
+        const { width, height } = getBookDimensions();
+    
+        const pageFlip = new St.PageFlip(bookContainer, {
+          width: isMobileView() ? width : width / 2,
+          height,
+          size: "stretch",
+          minWidth: 315,
+          maxWidth: 1000,
+          minHeight: 420,
+          maxHeight: 1536,
           showCover: false,
           mobileScrollSupport: false,
+          usePortrait: isMobileView(),
+          flippingTime: 600,
+          maxShadowOpacity: 0.5,
         });
-
+    
         pageFlip.loadFromImages(images);
-
-        // Navigation buttons
+    
         const prevBtn = document.getElementById("prevBtn");
         const nextBtn = document.getElementById("nextBtn");
-
-        prevBtn.addEventListener("click", () => {
-          pageFlip.flipPrev();
-        });
-
-        nextBtn.addEventListener("click", () => {
-          pageFlip.flipNext();
-        });
-
-        // Disable buttons at the beginning and end
-        pageFlip.on("flip", (e) => {
+    
+        prevBtn.addEventListener("click", () => pageFlip.flipPrev());
+        nextBtn.addEventListener("click", () => pageFlip.flipNext());
+    
+        pageFlip.on("flip", () => {
           const currentPage = pageFlip.getCurrentPageIndex();
           const totalPages = pageFlip.getPageCount();
-
           prevBtn.disabled = currentPage === 0;
           nextBtn.disabled = currentPage >= totalPages - 1;
         });
-
-        // Initialize button states
+    
         prevBtn.disabled = true;
+    
+        // Resize listener
+        window.addEventListener("resize", () => {
+          const { width, height } = getBookDimensions();
+          pageFlip.update({
+            width: isMobileView() ? width : width / 2,
+            height,
+            usePortrait: isMobileView(),
+          });
+        });
       });
     </script>
+    
   </body>
 </html>
