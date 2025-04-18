@@ -47,58 +47,8 @@
     <!--====== Style css ======-->
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <style>
+    <link rel="stylesheet" href="assets/css/book-menu.css">
 
-
-      .menu {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        width: 100vw;
-      }
-
-      .book-container {
-        width: 800px;
-        height: 600px;
-        margin: 20px 0;
-      }
-
-      .controls {
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-      }
-
-      button {
-        padding: 10px 20px;
-        background-color: #343a40;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-
-      button:hover {
-        background-color: #495057;
-      }
-
-      button:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-
-      .full-width {
-        width: 100vw;
-        margin: 0;
-        padding: 50px 0 20px 0;
-      }
-    </style>
   </head>
   <body>
     <!--====== Start Preloader ======-->
@@ -213,20 +163,40 @@
     </header>
     <!--====== End Header ======-->
 
-    <!--=== Start Menu Section ===-->
-    <section class="menu menu-section full-width pt-50 pb-20">
-      <div class="controls">
-        <button class="main-btn btn-red" id="prevBtn">
-          <i class="fas fa-angle-double-left me-2"></i> Previous
-        </button>
-        <button class="main-btn btn-red" id="nextBtn">
-          Next <i class="fas fa-angle-double-right"></i>
-        </button>
-      </div>
-      <div class="book-container" id="book"></div>
-    </section>
 
-    <!--=== End Menu Section ===-->
+      <!--=== Start Menu Section ===-->
+      <section class="menu-section pt-80 pb-80">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-10">
+              <div class="section-title text-center mb-50">
+                <span class="sub-title">Best food menu</span>
+                <h2>Choose Your Best Menus</h2>
+              </div>
+            </div>
+          </div>
+  
+      <!--=== Start Menu Section ===-->
+      <section class="menu menu-book-section menu-section full-width pb-20">
+        <div class="controls">
+          <button class="main-btn btn-red" id="prevBtn">
+            <i class="fas fa-angle-double-left me-2"></i> Previous
+          </button>
+          <button class="main-btn btn-red" id="nextBtn">
+            Next <i class="fas fa-angle-double-right"></i>
+          </button>
+        </div>
+        <div class="book-container" id="book"></div>
+      </section>
+  
+      <!--=== End Menu Section ===-->
+  
+          </div>
+        </div>
+      </section>
+      <!--=== End Menu Section ===-->
+
+
 
     <!--=== Start Footer ===-->
     <footer class="footer-dark dark-black-bg text-white p-r z-1 pt-80">

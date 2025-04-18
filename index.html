@@ -30,7 +30,6 @@
         <link rel="stylesheet" href="assets/css/default.css">
         <!--====== Style css ======-->
         <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/book-menu.css">
     </head>
     <body>
         <!--====== Start Preloader ======-->
@@ -454,13 +453,6 @@
             </div>
         </section><!--=== End About Section ===-->
 
-          <section class="menu-section menu-book-section pt-50 pb-20">
-            <div class="controls">
-                <button class="main-btn btn-red" id="prevBtn"><i class="fas fa-angle-double-left me-2"></i> Previous</button>
-                <button class="main-btn btn-red" id="nextBtn">Next <i class="fas fa-angle-double-right"></i></button>
-              </div>
-                <div class="book-container" id="book"></div>
-        </section><!--=== End Menu Section ===-->
 
 
 
@@ -933,55 +925,6 @@
         <!--====== Main js ======-->
         <script src="assets/js/theme.js"></script>
 
-          <!-- Include StPageFlip JS -->
-  <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const images = [
-        'MIDI SOIR MODIF ff/0.png',
-        'MIDI SOIR MODIF ff/1.png',
-        'MIDI SOIR MODIF ff/2.png',
-        'MIDI SOIR MODIF ff/3.png',
-        'MIDI SOIR MODIF ff/4.png',
-        'MIDI SOIR MODIF ff/5.png'
-        // Add more image paths as needed
-      ];
 
-      const pageFlip = new St.PageFlip(document.getElementById('book'), {
-        width: 400,
-        height: 600,
-        size: 'fixed',
-        maxShadowOpacity: 0.5,
-        showCover: false,
-        mobileScrollSupport: false,
-      });
-
-      pageFlip.loadFromImages(images);
-
-      // Navigation buttons
-      const prevBtn = document.getElementById('prevBtn');
-      const nextBtn = document.getElementById('nextBtn');
-
-      prevBtn.addEventListener('click', () => {
-        pageFlip.flipPrev();
-      });
-
-      nextBtn.addEventListener('click', () => {
-        pageFlip.flipNext();
-      });
-
-      // Disable buttons at the beginning and end
-      pageFlip.on('flip', (e) => {
-        const currentPage = pageFlip.getCurrentPageIndex();
-        const totalPages = pageFlip.getPageCount();
-
-        prevBtn.disabled = currentPage === 0;
-        nextBtn.disabled = currentPage >= totalPages - 1;
-      });
-
-      // Initialize button states
-      prevBtn.disabled = true;
-    });
-  </script>
     </body>
 </html>
