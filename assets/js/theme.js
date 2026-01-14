@@ -1,7 +1,7 @@
 /*-----------------------------------------------------------------------------------
-    Template Name: Qichen - Restaurant HTML Template
+    Template Name: Midi Soir
     Template URI: site.com
-    Description: Qichen is a creative & unique Restaurant HTML Template . This template is exclusive to Restaurants, Fast Food, Bakery, Cafe, Food Shop, Tea/Coffee Shop, Seafood Restaurant, Catering, and Food Business Websites.
+    Description: Midi Soir is a creative & unique Restaurant HTML Template . This template is exclusive to Restaurants, Fast Food, Bakery, Cafe, Food Shop, Tea/Coffee Shop, Seafood Restaurant, Catering, and Food Business Websites.
     Author: WebTend 
     Author URI: https://webtend.net/
     Version: 1.0
